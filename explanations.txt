@@ -1,0 +1,5 @@
+Question 1:
+I used the concept of the hash map to store the counts of upper and lower case of alphabets
+for source and target string. By harnessing them, I can achieve O(n) in time complicity.
+Moreover, I only need two constant length list to store the hash maps.
+The Space complicity is O(1)
