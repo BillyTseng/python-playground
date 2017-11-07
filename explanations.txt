@@ -7,3 +7,9 @@ The Space complicity is O(1)
 Question 2:
 By using recursion, I break the input string into a smallest string to process it.
 The time complicity is O(2^n), and the space complicity is O(1).
+
+Question 3:
+I sort the nodes by weight of the edge in ascending order. Since the least number
+ of the edge will be the number of vertices minus one, the minimum spanning tree is composed
+of sorted nodes list. Since reading all elements of the graph, the time complicity is O(n).
+Because of the extra space to exchange graph to list, the space complicity is O(n).
