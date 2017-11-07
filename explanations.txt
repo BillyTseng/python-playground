@@ -13,3 +13,9 @@ I sort the nodes by weight of the edge in ascending order. Since the least numbe
  of the edge will be the number of vertices minus one, the minimum spanning tree is composed
 of sorted nodes list. Since reading all elements of the graph, the time complicity is O(n).
 Because of the extra space to exchange graph to list, the space complicity is O(n).
+
+Question 4:
+Finding and saving the parents of nodes, then traverse nodes to find the collide one.
+Once collide is occurred, the node is the least common ancestor. Since using a loop to find
+parents, so the time complicity is O(n), n is the number of nodes. Moreover, I spent O(log n) to
+save parent nodes.

@@ -179,3 +179,79 @@ print "Question 3 case 2 should be "
 print "{'A': [('C', 1), ('B', 2)],"
 print " 'C': [('A', 1)],"
 print " 'B': [('A', 2)]}}: {}".format(question3(G))
+
+"""
+Question 4
+Find the least common ancestor between two nodes on a binary search tree.
+"""
+
+
+def question4(T, r, n1, n2):
+    path = []
+    path_n1 = find_path(path, T, n1)
+    path = []
+    path_n2 = find_path(path, T, n2)
+
+    # Choose the shorter path as begining to search common ancestor
+    if len(path_n1) > len(path_n2):
+        long_path = path_n1
+        short_path = path_n2
+    else:
+        long_path = path_n2
+        short_path = path_n1
+
+    # Find common ancestor when two path is collided
+    for item in short_path:
+        if item in long_path:
+            return item
+
+
+def find_path(path, T, node):
+    """
+    find_path find the path of asked node.
+    arg:
+        path: save visited parent nodes.
+        T: input tree.
+        node: asked node.
+    return:
+        path: return results
+    """
+    for item in T:
+        if item[node] == 1:
+            parent_idx = T.index(item)
+            path.append(parent_idx)
+            find_path(path, T, parent_idx)
+    return path
+
+# Case 1: edge case, no valid ancestor, should be None
+print "Question 4 case 1 should be None:"
+print question4([[0, 1, 0, 0, 0],
+                [0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 1],
+                [0, 0, 0, 0, 0]],
+                3,
+                1,
+                4)
+
+# Case 2: edge case, not a valid BST, should be None
+print "Question 4 case 2 should be None:"
+print question4([[0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0]],
+                3,
+                1,
+                4)
+
+# Case 3: shoulde be 3
+print "Question 4 case 3 should be 3:"
+print question4([[0, 1, 0, 0, 0],
+                [0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0],
+                [1, 0, 0, 0, 1],
+                [0, 0, 0, 0, 0]],
+                3,
+                1,
+                4)
