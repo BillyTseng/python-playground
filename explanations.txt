@@ -19,3 +19,8 @@ Finding and saving the parents of nodes, then traverse nodes to find the collide
 Once collide is occurred, the node is the least common ancestor. Since using a loop to find
 parents, so the time complicity is O(n), n is the number of nodes. Moreover, I spent O(log n) to
 save parent nodes.
+
+Question 5:
+I record the total length of the linked list while setting up. I only need to traverse
+whole linked list once. Thus, the time complicity is O(n), n is the length of the linked list.
+And,  the space complicity is O(1), since the consumed space is constant.

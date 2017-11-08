@@ -255,3 +255,80 @@ print question4([[0, 1, 0, 0, 0],
                 3,
                 1,
                 4)
+
+"""
+Question 5
+Find the element in a singly linked list that's m elements from the end.
+"""
+
+
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList(object):
+    def __init__(self, head):
+        self.head = head
+        self.length = 1
+
+    def append(self, node):
+        # the counter of  LinkedList's length
+        self.length += 1
+        if self.head.next is None:
+            self.head.next = node
+        else:
+            current_node = self.head
+            while current_node.next:
+                current_node = current_node.next
+            current_node.next = node
+
+    def get_length(self):
+        return self.length
+
+    def get_mth_node_from_end(self, m):
+        # reverse m index from top to the end.
+        m = self.length + 1 - m
+        # set counter from the 1st element: self.head
+        counter = 1
+        mth_node = self.head
+        while counter is not m:
+            counter += 1
+            mth_node = mth_node.next
+        return mth_node.data
+
+
+def question5(ll, m):
+    """
+    ll: inputed linked list
+    m: mth number from the end
+    Return the value of the node at that position.
+    """
+    # edge case: m is greater than length of linked list.
+    #           m is less or equal than zero.
+    if m > ll.get_length() or m <= 0:
+        return None
+    return ll.get_mth_node_from_end(m)
+
+
+# set nodes' data
+n1 = Node(1)
+n2 = Node(2)
+n3 = Node(3)
+n4 = Node(4)
+
+# set linked list
+ll = LinkedList(n1)
+ll.append(n2)
+ll.append(n3)
+ll.append(n4)
+
+# Case 1: edge case, m is greater than length of linked list.
+print "Question 5 case 1 should be None: {}".format(question5(ll, 5))
+# Case 2: edge case, m is less zero.
+print "Question 5 case 2 should be None: {}".format(question5(ll, -1))
+print "Question 5 case 3 should be 4: {}".format(question5(ll, 1))
+print "Question 5 case 4 should be 3: {}".format(question5(ll, 2))
+print "Question 5 case 5 should be 2: {}".format(question5(ll, 3))
+print "Question 5 case 6 should be 1: {}".format(question5(ll, 4))
